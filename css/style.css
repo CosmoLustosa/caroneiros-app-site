@@ -4,14 +4,14 @@
 
 /* ----- CSS Custom Properties ----- */
 :root {
-  --primary: #6C3FAA;
-  --primary-hover: #5A2E91;
-  --primary-light: #8B5CF6;
-  --primary-gradient: linear-gradient(135deg, #6C3FAA 0%, #8B5CF6 50%, #A78BFA 100%);
-  --secondary: #FF6B35;
-  --secondary-hover: #E55A2B;
-  --accent: #4ECDC4;
-  --accent-hover: #3DBDB5;
+  --primary: #1A3C5E;
+  --primary-hover: #122C46;
+  --primary-light: #2A6098;
+  --primary-gradient: linear-gradient(135deg, #1A3C5E 0%, #2A6098 50%, #7FB3D9 100%);
+  --secondary: #E8602C;
+  --secondary-hover: #CC5020;
+  --accent: #7FB3D9;
+  --accent-hover: #619CC6;
 
   --text: #1F2937;
   --text-light: #6B7280;
