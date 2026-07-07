@@ -18,9 +18,9 @@
   const yearSpan = document.getElementById('currentYear')
   const statNumbers = document.querySelectorAll('[data-count]')
 
-  const APP_URL = shareLinkInput ? shareLinkInput.value : 'https://caroneiros.app'
+  let APP_URL = shareLinkInput ? shareLinkInput.value : 'https://caroneiros.online'
   const APP_NAME = 'Caroneiros'
-  const SHARE_TEXT = `Baixe o ${APP_NAME} e encontre caronas perto de você! ${APP_URL}`
+  let SHARE_TEXT = `Baixe o ${APP_NAME} e encontre caronas perto de você! ${APP_URL}`
 
   /* ============================================================
      Auth System
@@ -87,6 +87,15 @@
   function updateAuthUI () {
     updateNavAuthBtn()
     const user = getStoredUser()
+
+    if (shareLinkInput) {
+      shareLinkInput.value = user 
+        ? `https://caroneiros.online/invite/${user.id}` 
+        : 'https://caroneiros.online'
+    }
+    APP_URL = shareLinkInput ? shareLinkInput.value : 'https://caroneiros.online'
+    SHARE_TEXT = `Baixe o ${APP_NAME} e encontre caronas perto de você! ${APP_URL}`
+
     if (!authBtn) return
 
     if (user) {
@@ -333,6 +342,23 @@
     })
   }
 
+  /* ----- Generate Referral Link ----- */
+  const generateLinkBtn = document.getElementById('generateLink')
+  if (generateLinkBtn && shareLinkInput) {
+    generateLinkBtn.addEventListener('click', function () {
+      const user = getStoredUser()
+      if (user) {
+        shareLinkInput.value = `https://caroneiros.online/invite/${user.id}`
+        APP_URL = shareLinkInput.value
+        SHARE_TEXT = `Baixe o ${APP_NAME} e encontre caronas perto de você! ${APP_URL}`
+        showToast('Link de indicação gerado!')
+      } else {
+        showToast('Faça login para gerar um link de convite e ganhar bônus!')
+        openAuthModal('signup')
+      }
+    })
+  }
+
   /* ----- Header scroll effect ----- */
   function handleHeaderScroll () {
     if (!header) return
@@ -555,6 +581,10 @@
         closeAuthModal()
         return
       }
+      if (appleStoreModal && appleStoreModal.classList.contains('modal--open')) {
+        closeAppleModal()
+        return
+      }
       if (mainNav && mainNav.classList.contains('header__nav--open')) {
         mainNav.classList.remove('header__nav--open')
         if (menuToggle) {
@@ -570,11 +600,46 @@
   /* ----- App Stores download tracking ----- */
   document.querySelectorAll('.btn--store').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      const store = btn.textContent.trim().includes('Google') ? 'google_play' : 'app_store'
+      const store = btn.id === 'googlePlayBtn' ? 'google_play' : 'app_store'
       if (typeof window.gtag === 'function') {
         window.gtag('event', 'download_click', { store: store, app: APP_NAME })
       }
     })
   })
+
+  /* ----- Apple Store Modal Control ----- */
+  const appleStoreBtn = document.getElementById('appleStoreBtn')
+  const appleStoreModal = document.getElementById('appleStoreModal')
+  const appleOverlay = document.getElementById('appleOverlay')
+  const appleClose = document.getElementById('appleClose')
+  const appleModalOk = document.getElementById('appleModalOk')
+
+  function openAppleModal (e) {
+    if (e) e.preventDefault()
+    if (!appleStoreModal) return
+    appleStoreModal.classList.add('modal--open')
+    appleStoreModal.setAttribute('aria-hidden', 'false')
+    document.body.classList.add('modal-open')
+  }
+
+  function closeAppleModal () {
+    if (!appleStoreModal) return
+    appleStoreModal.classList.remove('modal--open')
+    appleStoreModal.setAttribute('aria-hidden', 'true')
+    document.body.classList.remove('modal-open')
+  }
+
+  if (appleStoreBtn) {
+    appleStoreBtn.addEventListener('click', openAppleModal)
+  }
+  if (appleOverlay) {
+    appleOverlay.addEventListener('click', closeAppleModal)
+  }
+  if (appleClose) {
+    appleClose.addEventListener('click', closeAppleModal)
+  }
+  if (appleModalOk) {
+    appleModalOk.addEventListener('click', closeAppleModal)
+  }
 
 })()
