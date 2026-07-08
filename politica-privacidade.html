@@ -101,10 +101,14 @@
       font-weight: 600;
     }
 
-    .privacy__content ul {
-      list-style: none;
+    .privacy__content ul,
+    .privacy__content ol {
       margin: 0 0 20px 0;
       padding: 0;
+    }
+
+    .privacy__content ul {
+      list-style: none;
     }
 
     .privacy__content ul li {
@@ -126,6 +130,25 @@
       border-radius: 50%;
       background: var(--primary-light);
       opacity: 0.5;
+    }
+
+    .privacy__content ol {
+      padding-left: 20px;
+    }
+
+    .privacy__content ol li {
+      font-size: 0.938rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    .privacy__content ul ul {
+      margin: 4px 0 0 0;
+    }
+
+    .privacy__content ul ul li {
+      font-size: 0.875rem;
     }
 
     .privacy__content hr {
@@ -220,8 +243,8 @@
 
           <h3>B. Informações Coletadas Automaticamente</h3>
           <ul>
-            <li><strong>Dados de Localização Precisa (GPS):</strong> Coletamos a localização exata do seu dispositivo em primeiro plano (quando o app está aberto) para parear ofertas de carona com passageiros e calcular trajetos. O aplicativo pode coletar a localização aproximada ou precisa também em segundo plano para o rastreamento da viagem ativa, se o usuário consentir explicitamente.</li>
-            <li><strong>Identificadores do Dispositivo:</strong> Endereço IP, modelo do aparelho, sistema operacional, ID único de publicidade (para exibição de anúncios via AdMob) e dados de telemetria/segurança do dispositivo (verificações de integridade via freeRASP).</li>
+            <li><strong>Dados de Localização Precisa (GPS):</strong> O Caroneiros coleta a localização exata do seu dispositivo tanto em <strong>primeiro plano (foreground)</strong> — quando o app está aberto e em uso — quanto em <strong>segundo plano (background)</strong> — quando o app está minimizado — para parear motoristas e passageiros, calcular trajetos, estimar tempos de chegada e rastrear viagens ativas. A coleta em segundo plano só ocorre mediante consentimento explícito do usuário e é essencial para o funcionamento do serviço de rastreamento de viagem.</li>
+            <li><strong>Identificadores do Dispositivo:</strong> Endereço IP, modelo do aparelho, sistema operacional, ID único de publicidade (para exibição de anúncios via Google AdMob) e dados de telemetria/segurança do dispositivo (verificações de integridade via freeRASP).</li>
             <li><strong>Dados de Uso e Desempenho:</strong> Logs de erro (Firebase Crashlytics) e estatísticas de uso (Firebase Analytics) para melhoria contínua da estabilidade do aplicativo.</li>
           </ul>
 
@@ -245,7 +268,13 @@
           <p><strong>Nós não vendemos os seus dados pessoais a terceiros.</strong> O compartilhamento ocorre estritamente para o funcionamento do serviço:</p>
           <ul>
             <li><strong>Com outros Usuários:</strong> Nome, foto de perfil, avaliação e localização física são compartilhados com o motorista/passageiro da viagem aceita para viabilizar o encontro e a segurança mútua.</li>
-            <li><strong>Com Provedores de Serviços:</strong> Google Firebase (infraestrutura de dados, autenticação e estatísticas de erro) e Google AdMob (rede de anúncios).</li>
+            <li><strong>Com Provedores de Serviços:</strong> Utilizamos serviços de terceiros essenciais para o funcionamento do aplicativo:
+              <ul style="margin-top: 8px;">
+                <li><strong>Google Firebase</strong> — infraestrutura de dados (Firestore), autenticação de usuários (Firebase Auth) e monitoramento de erros (Firebase Crashlytics).</li>
+                <li><strong>Google AdMob</strong> — rede de anúncios para exibição de publicidade no aplicativo.</li>
+                <li><strong>freeRASP</strong> — biblioteca de segurança integrada ao app para verificação de integridade do dispositivo, prevenção de engenharia reversa e modificações maliciosas no aplicativo.</li>
+              </ul>
+            </li>
             <li><strong>Por Motivos de Segurança ou Legais:</strong> Se necessário para proteger a segurança de nossos usuários ou responder a investigações criminais ou de trânsito.</li>
           </ul>
 
@@ -259,11 +288,16 @@
 
           <h2>5. Retenção e Exclusão de Dados (Account Deletion)</h2>
 
-          <p>Você possui controle total sobre suas informações:</p>
-          <ul>
-            <li><strong>Solicitação de Exclusão:</strong> Você pode solicitar a exclusão definitiva de sua conta diretamente nas configurações do seu perfil de usuário dentro do aplicativo.</li>
-            <li><strong>Eliminação dos Dados:</strong> Ao confirmar a exclusão, todos os seus dados pessoais (nome, e-mail, telefone, veículos cadastrados e histórico de viagens) serão permanentemente apagados dos nossos servidores de produção (Firebase Auth e Firestore), em conformidade com a LGPD (Lei Geral de Proteção de Dados).</li>
-          </ul>
+          <p>Você possui controle total sobre suas informações. Para solicitar a exclusão definitiva da sua conta e de todos os dados associados:</p>
+          <ol>
+            <li>Abra o aplicativo Caroneiros no seu celular.</li>
+            <li>Acesse o menu <strong>Perfil</strong> ou <strong>Configurações</strong>.</li>
+            <li>Selecione a opção <strong>Excluir Conta</strong> ou <strong>Solicitar Exclusão de Dados</strong>.</li>
+            <li>Confirme a exclusão.</li>
+          </ol>
+          <p>Você também pode solicitar a exclusão <a href="delete-account.html">preenchendo o formulário online</a> ou enviando um e-mail para o suporte oficial do desenvolvedor registrado na Google Play Console.</p>
+          <p><strong>O que é excluído:</strong> Ao confirmar a exclusão, todos os seus dados pessoais (nome, e-mail, telefone, foto de perfil, veículos cadastrados, histórico de viagens e avaliações) serão <strong>permanentemente apagados</strong> dos nossos servidores de produção (Firebase Auth e Firestore) em até 30 dias, em conformidade com a LGPD (Lei Geral de Proteção de Dados).</p>
+          <p><strong>O que não é excluído:</strong> Dados anonimizados ou agregados utilizados para estatísticas internas poderão ser retidos, pois não permitem identificação individual.</p>
 
           <hr>
 
@@ -293,6 +327,7 @@
         <a href="index.html#download" class="footer__link">Download</a>
         <a href="index.html#share" class="footer__link">Compartilhar</a>
         <a href="politica-privacidade.html" class="footer__link">Privacidade</a>
+        <a href="delete-account.html" class="footer__link">Excluir Conta</a>
       </nav>
       <p class="footer__copy">&copy; <span id="currentYear"></span> Caroneiros. Todos os direitos reservados.</p>
     </div>
