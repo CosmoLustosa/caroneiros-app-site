@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excluir Conta — Caroneiros</title>
+  <meta name="description" content="Solicite a exclusão da sua conta e dados pessoais do aplicativo Caroneiros.">
+  <meta name="theme-color" content="#1A3C5E">
+
+  <meta property="og:title" content="Excluir Conta — Caroneiros">
+  <meta property="og:description" content="Solicite a exclusão da sua conta e dados pessoais do aplicativo Caroneiros.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://caroneiros.online/delete-account.html">
+  <meta property="og:image" content="assets/logo_caroneiros_512.png">
+  <meta property="og:locale" content="pt_BR">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Excluir Conta — Caroneiros">
+  <meta name="twitter:description" content="Solicite a exclusão da sua conta e dados pessoais do aplicativo Caroneiros.">
+  <meta name="twitter:image" content="assets/logo_caroneiros_512.png">
+
+  <link rel="icon" type="image/png" href="assets/logo_caroneiros_250.png">
+  <link rel="apple-touch-icon" href="assets/logo_caroneiros_512.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    .delete {
+      padding: 120px 0 80px;
+      min-height: 100vh;
+    }
+
+    .delete__header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 40px;
+    }
+
+    .delete__tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(220, 38, 38, 0.08);
+      color: #DC2626;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .delete__title {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .delete__desc {
+      font-size: 0.938rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    .delete__card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .delete__info {
+      background: var(--bg-alt);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 20px;
+      margin-bottom: 28px;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--text-light);
+    }
+
+    .delete__info h3 {
+      font-size: 0.938rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .delete__info ul {
+      list-style: none;
+      margin: 8px 0 0 0;
+      padding: 0;
+    }
+
+    .delete__info ul li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .delete__info ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      opacity: 0.5;
+    }
+
+    .delete__info strong {
+      color: var(--text);
+    }
+
+    .delete__methods {
+      margin-bottom: 28px;
+    }
+
+    .delete__methods h3 {
+      font-size: 0.938rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .delete__method {
+      display: flex;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      font-size: 0.875rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .delete__method-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #fff;
+      margin-top: 1px;
+    }
+
+    .delete__method-icon--web {
+      background: var(--primary-gradient);
+    }
+
+    .delete__method-icon--app {
+      background: linear-gradient(135deg, #10B981, #059669);
+    }
+
+    .delete__method strong {
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.813rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font);
+      font-size: 0.938rem;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+
+    .form-group input::placeholder {
+      color: var(--text-lighter);
+    }
+
+    .form-group input:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(108, 63, 170, 0.1);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 20px 0 24px;
+    }
+
+    .checkbox-group input {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .checkbox-group label {
+      font-size: 0.813rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .btn--danger {
+      background: linear-gradient(135deg, #DC2626, #B91C1C);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+      width: 100%;
+    }
+
+    .btn--danger:hover {
+      box-shadow: 0 6px 20px rgba(220, 38, 38, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn--danger:active {
+      transform: translateY(0);
+    }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .success-message__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.1);
+      color: #10B981;
+      margin-bottom: 16px;
+    }
+
+    .success-message h2 {
+      font-size: 1.375rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .success-message p {
+      font-size: 0.938rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .delete {
+        padding: 100px 0 60px;
+      }
+
+      .delete__card {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo" aria-label="Caroneiros - Voltar ao início">
+        <img src="assets/logo_caroneiros_250.png" alt="Caroneiros" width="40" height="40" class="header__logo-img" loading="eager">
+        <span class="header__logo-text">Caroneiros</span>
+      </a>
+      <button class="header__menu-btn" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span class="header__menu-bar"></span>
+        <span class="header__menu-bar"></span>
+        <span class="header__menu-bar"></span>
+      </button>
+      <nav class="header__nav" id="mainNav" role="navigation" aria-label="Navegação principal">
+        <ul class="header__nav-list">
+          <li><a href="index.html#features" class="header__nav-link">Recursos</a></li>
+          <li><a href="index.html#gallery" class="header__nav-link">Galeria</a></li>
+          <li><a href="index.html#download" class="header__nav-link">Download</a></li>
+          <li><a href="index.html#share" class="header__nav-link">Compartilhar</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <a href="index.html" class="btn btn--outline btn--sm header__auth">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span>Voltar</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="delete">
+      <div class="container">
+        <div class="delete__header">
+          <span class="delete__tag">Exclusão de Dados</span>
+          <h1 class="delete__title">Excluir Conta</h1>
+          <p class="delete__desc">Solicite a exclusão permanente da sua conta e dados pessoais do aplicativo Caroneiros.</p>
+        </div>
+
+        <div class="delete__card" id="form-container">
+          <div class="delete__info">
+            <h3>Informações sobre seus Dados</h3>
+            <p><strong>Quais dados serão permanentemente excluídos?</strong></p>
+            <ul>
+              <li>Informações pessoais (Nome, E-mail, Telefone e Foto de perfil).</li>
+              <li>Dados de veículos cadastrados (Modelo, Cor e Placa).</li>
+              <li>Histórico de ofertas de carona, encomendas e fretes cadastrados no app.</li>
+            </ul>
+            <br>
+            <p><strong>Quais dados são mantidos?</strong></p>
+            <ul>
+              <li>Histórico de pagamentos efetuados e registros fiscais de transações são mantidos de forma anonimizada pelo período de 5 (cinco) anos para conformidade com a legislação tributária brasileira e prevenção de fraudes.</li>
+            </ul>
+            <br>
+            <p><strong>Prazo de processamento:</strong> Seus dados pessoais serão apagados dos nossos servidores de produção em até <strong>48 horas</strong> a partir deste envio.</p>
+          </div>
+
+          <div class="delete__methods">
+            <h3>Etapas para realizar a exclusão</h3>
+            <div class="delete__method">
+              <div class="delete__method-icon delete__method-icon--web">1</div>
+              <div><strong>Método Web:</strong> Preencha o formulário abaixo, marque a autorização e clique em "Solicitar Exclusão".</div>
+            </div>
+            <div class="delete__method">
+              <div class="delete__method-icon delete__method-icon--app">2</div>
+              <div><strong>Método no Aplicativo:</strong> Abra o app <strong>Caroneiros</strong>, faça login, acesse seu <strong>Perfil</strong> e clique no botão <strong>Excluir conta</strong> na parte inferior da tela.</div>
+            </div>
+          </div>
+
+          <form id="delete-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="name">Nome Completo</label>
+              <input type="text" id="name" required placeholder="Digite seu nome completo">
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-mail Cadastrado</label>
+              <input type="email" id="email" required placeholder="exemplo@email.com">
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Celular cadastrado (com DDD)</label>
+              <input type="tel" id="phone" required placeholder="(85) 99999-9999">
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="confirm" required>
+              <label for="confirm">Confirmo que desejo excluir permanentemente meus dados pessoais do aplicativo Caroneiros e declaro estar ciente de que esta ação é irreversível.</label>
+            </div>
+
+            <button type="submit" class="btn btn--danger btn--lg">Solicitar Exclusão de Dados</button>
+          </form>
+
+          <div id="success-container" class="success-message">
+            <div class="success-message__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h2>Solicitação Confirmada!</h2>
+            <p>Sua solicitação de exclusão de conta e dados do aplicativo <strong>Caroneiros</strong> foi recebida pelo desenvolvedor <strong>Cosmo Lustosa</strong>.<br><br>As informações pessoais de perfil e veículos associadas serão excluídas de nossos bancos de dados ativos dentro do prazo de <strong>48 horas</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/logo_caroneiros_250.png" alt="Caroneiros" width="32" height="32" class="footer__logo" loading="lazy">
+        <span class="footer__name">Caroneiros</span>
+      </div>
+      <nav class="footer__nav" aria-label="Links do rodapé">
+        <a href="index.html#features" class="footer__link">Recursos</a>
+        <a href="index.html#gallery" class="footer__link">Galeria</a>
+        <a href="index.html#download" class="footer__link">Download</a>
+        <a href="index.html#share" class="footer__link">Compartilhar</a>
+        <a href="politica-privacidade.html" class="footer__link">Privacidade</a>
+        <a href="delete-account.html" class="footer__link">Excluir Conta</a>
+      </nav>
+      <p class="footer__copy">&copy; <span id="currentYear"></span> Caroneiros. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      console.log('Solicitação de exclusão de dados enviada:', { name, email, phone });
+
+      document.getElementById('form-container').classList.add('success-message');
+      document.getElementById('form-container').style.display = 'block';
+      document.getElementById('success-container').style.display = 'block';
+      document.getElementById('delete-form').style.display = 'none';
+      document.querySelector('.delete__methods').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
