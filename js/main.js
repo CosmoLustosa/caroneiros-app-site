@@ -45,6 +45,7 @@
   const authPassword = document.getElementById('authPassword')
   const authSubmit = document.getElementById('authSubmit')
   const authSubmitText = document.getElementById('authSubmitText')
+  const navAuthBtn = document.getElementById('navAuthBtn')
 
   let currentAuthTab = 'signup'
 
@@ -84,6 +85,13 @@
     updateAuthUI()
   }
 
+  function handleUserLogoutClick () {
+    if (confirm('Deseja sair da sua conta?')) {
+      logoutUser()
+      showToast('Você saiu da sua conta.')
+    }
+  }
+
   function updateAuthUI () {
     updateNavAuthBtn()
     const user = getStoredUser()
@@ -109,12 +117,8 @@
       authBtn.className = 'header__user'
       authBtn.title = 'Você está logado. Clique para sair.'
       authBtn.removeEventListener('click', openAuthModal)
-      authBtn.addEventListener('click', function onUserClick () {
-        if (confirm('Deseja sair da sua conta?')) {
-          logoutUser()
-          showToast('Você saiu da sua conta.')
-        }
-      })
+      authBtn.removeEventListener('click', handleUserLogoutClick)
+      authBtn.addEventListener('click', handleUserLogoutClick)
     } else {
       authBtn.className = 'btn btn--outline btn--sm header__auth'
       authBtn.title = ''
@@ -122,7 +126,8 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         <span>Entrar</span>
       `
-      authBtn.removeEventListener('click', onUserClick)
+      authBtn.removeEventListener('click', handleUserLogoutClick)
+      authBtn.removeEventListener('click', openAuthModal)
       authBtn.addEventListener('click', openAuthModal)
     }
   }
@@ -285,8 +290,6 @@
   updateAuthUI()
 
   /* ----- Mobile Nav Auth Button ----- */
-  const navAuthBtn = document.getElementById('navAuthBtn')
-
   if (navAuthBtn) {
     navAuthBtn.addEventListener('click', function () {
       if (getStoredUser()) {
@@ -641,5 +644,97 @@
   if (appleModalOk) {
     appleModalOk.addEventListener('click', closeAppleModal)
   }
+
+  /* ============================================================
+     Gallery Lightbox System
+     ============================================================ */
+  const galleryLightbox = document.getElementById('galleryLightbox')
+  const lightboxOverlay = document.getElementById('lightboxOverlay')
+  const lightboxClose = document.getElementById('lightboxClose')
+  const lightboxImg = document.getElementById('lightboxImg')
+  const lightboxTag = document.getElementById('lightboxTag')
+  const lightboxTitle = document.getElementById('lightboxTitle')
+  const lightboxDesc = document.getElementById('lightboxDesc')
+  const lightboxPrev = document.getElementById('lightboxPrev')
+  const lightboxNext = document.getElementById('lightboxNext')
+
+  let lightboxItems = []
+  let currentLightboxIndex = 0
+
+  function initGalleryLightbox () {
+    const triggers = document.querySelectorAll('[data-lightbox-src]')
+    if (!triggers.length) return
+
+    const itemsMap = new Map()
+    triggers.forEach(function (btn) {
+      const src = btn.getAttribute('data-lightbox-src')
+      if (!itemsMap.has(src)) {
+        itemsMap.set(src, {
+          src: src,
+          tag: btn.getAttribute('data-lightbox-tag') || 'Recurso',
+          title: btn.getAttribute('data-lightbox-title') || 'Tela do App',
+          desc: btn.getAttribute('data-lightbox-desc') || ''
+        })
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault()
+        const items = Array.from(itemsMap.values())
+        const index = items.findIndex(item => item.src === src)
+        if (index !== -1) {
+          lightboxItems = items
+          openLightbox(index)
+        }
+      })
+    })
+  }
+
+  function openLightbox (index) {
+    if (!galleryLightbox || !lightboxItems.length) return
+    currentLightboxIndex = (index + lightboxItems.length) % lightboxItems.length
+    const item = lightboxItems[currentLightboxIndex]
+
+    if (lightboxImg) {
+      lightboxImg.src = item.src
+      lightboxImg.alt = item.title
+    }
+    if (lightboxTag) lightboxTag.textContent = item.tag
+    if (lightboxTitle) lightboxTitle.textContent = item.title
+    if (lightboxDesc) lightboxDesc.textContent = item.desc
+
+    galleryLightbox.classList.add('modal--open')
+    galleryLightbox.setAttribute('aria-hidden', 'false')
+    document.body.classList.add('modal-open')
+  }
+
+  function closeLightbox () {
+    if (!galleryLightbox) return
+    galleryLightbox.classList.remove('modal--open')
+    galleryLightbox.setAttribute('aria-hidden', 'true')
+    document.body.classList.remove('modal-open')
+  }
+
+  function nextLightbox () {
+    openLightbox(currentLightboxIndex + 1)
+  }
+
+  function prevLightbox () {
+    openLightbox(currentLightboxIndex - 1)
+  }
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox)
+  if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox)
+  if (lightboxNext) lightboxNext.addEventListener('click', nextLightbox)
+  if (lightboxPrev) lightboxPrev.addEventListener('click', prevLightbox)
+
+  document.addEventListener('keydown', function (e) {
+    if (galleryLightbox && galleryLightbox.classList.contains('modal--open')) {
+      if (e.key === 'Escape') closeLightbox()
+      if (e.key === 'ArrowRight') nextLightbox()
+      if (e.key === 'ArrowLeft') prevLightbox()
+    }
+  })
+
+  initGalleryLightbox()
 
 })()
