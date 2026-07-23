@@ -923,17 +923,28 @@ ul {
 
 .download__content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .download__info {
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  padding: 48px 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 40px 48px;
   background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 800px;
+}
+
+.download__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
 .download__qrcode {
@@ -964,7 +975,49 @@ ul {
 .download__links {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
+  width: 100%;
+}
+
+.download__copy-field {
+  display: flex;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+}
+
+.download__copy-input {
+  flex: 1;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  background: transparent;
+  outline: none;
+  font-family: var(--font);
+  min-width: 0;
+}
+
+.download__copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition);
+  font-family: var(--font);
+  white-space: nowrap;
+}
+
+.download__copy-btn:hover {
+  background: var(--primary-hover);
 }
 
 .download__banner-apple {
@@ -1545,9 +1598,9 @@ body.modal-open {
   }
 
   .download__info {
-    flex-direction: column;
-    text-align: center;
+    grid-template-columns: 1fr 1fr;
     padding: 32px 24px;
+    gap: 24px;
   }
 }
 
@@ -1694,6 +1747,31 @@ body.modal-open {
   .gallery__caption {
     font-size: 0.688rem;
     padding: 24px 8px 8px;
+  }
+
+  .download__info {
+    grid-template-columns: 1fr;
+    padding: 24px 16px;
+    gap: 32px;
+  }
+
+  .download__card {
+    gap: 12px;
+  }
+
+  .download__copy-field {
+    flex-direction: column;
+  }
+
+  .download__copy-input {
+    text-align: center;
+    padding: 10px 12px;
+    font-size: 0.75rem;
+  }
+
+  .download__copy-btn {
+    justify-content: center;
+    padding: 10px 14px;
   }
 }
 
