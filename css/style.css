@@ -271,6 +271,17 @@ ul {
   font-weight: 600;
 }
 
+.header__nav-link--highlight {
+  background: var(--secondary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.header__nav-link--highlight:hover {
+  background: var(--secondary-hover);
+  color: #fff;
+}
+
 .header__actions {
   display: flex;
   align-items: center;
