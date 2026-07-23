@@ -18,6 +18,11 @@
   const yearSpan = document.getElementById('currentYear')
   const statNumbers = document.querySelectorAll('[data-count]')
 
+  const APK_URL = 'https://github.com/CosmoLustosa/caroneiros-app-site/releases/latest/download/caroneiros.apk'
+  const PAINEL_URL = 'https://caroneiros.online/painel/index.html'
+  const isAndroid = /android/i.test(navigator.userAgent)
+  const downloadTarget = isAndroid ? APK_URL : PAINEL_URL
+
   let APP_URL = shareLinkInput ? shareLinkInput.value : 'https://caroneiros.online'
   const APP_NAME = 'Caroneiros'
   let SHARE_TEXT = `Baixe o ${APP_NAME} e encontre caronas perto de você! ${APP_URL}`
@@ -632,15 +637,36 @@
     }
   })
 
-  /* ----- App Stores download tracking ----- */
+  /* ----- Device-aware download redirect ----- */
+  function redirectDownload(e, url) {
+    e.preventDefault()
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'download_click', { app: APP_NAME })
+    }
+    window.location.href = url
+  }
+
   document.querySelectorAll('.btn--store').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      const store = btn.id === 'googlePlayBtn' ? 'google_play' : 'app_store'
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'download_click', { store: store, app: APP_NAME })
+    btn.addEventListener('click', function (e) {
+      if (btn.id === 'googlePlayBtn') {
+        redirectDownload(e, isAndroid ? APK_URL : PAINEL_URL)
+      } else {
+        redirectDownload(e, PAINEL_URL)
       }
     })
   })
+
+  const headerCta = document.querySelector('.header__cta')
+  if (headerCta) {
+    headerCta.addEventListener('click', function (e) {
+      e.preventDefault()
+      const url = isAndroid ? APK_URL : PAINEL_URL
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'download_click', { app: APP_NAME })
+      }
+      window.location.href = url
+    })
+  }
 
   /* ----- Apple Store Modal Control ----- */
   const appleStoreBtn = document.getElementById('appleStoreBtn')
