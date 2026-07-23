@@ -345,6 +345,38 @@
     })
   }
 
+  /* ----- Copy APK Link ----- */
+  const copyApkLink = document.getElementById('copyApkLink')
+  const apkLinkInput = document.getElementById('apkLink')
+  if (copyApkLink && apkLinkInput) {
+    copyApkLink.addEventListener('click', async function () {
+      try {
+        await navigator.clipboard.writeText(apkLinkInput.value)
+        showToast('Link copiado!')
+      } catch (_err) {
+        apkLinkInput.select()
+        document.execCommand('copy')
+        showToast('Link copiado!')
+      }
+    })
+  }
+
+  /* ----- Copy Painel Link ----- */
+  const copyPainelLink = document.getElementById('copyPainelLink')
+  const painelLinkInput = document.getElementById('painelLink')
+  if (copyPainelLink && painelLinkInput) {
+    copyPainelLink.addEventListener('click', async function () {
+      try {
+        await navigator.clipboard.writeText(painelLinkInput.value)
+        showToast('Link copiado!')
+      } catch (_err) {
+        painelLinkInput.select()
+        document.execCommand('copy')
+        showToast('Link copiado!')
+      }
+    })
+  }
+
   /* ----- Generate Referral Link ----- */
   const generateLinkBtn = document.getElementById('generateLink')
   if (generateLinkBtn && shareLinkInput) {
