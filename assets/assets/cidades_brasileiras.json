@@ -1,0 +1,444 @@
+{
+  "cidades": [
+    {
+      "cidade": "Rio Branco",
+      "estado": "Acre",
+      "uf": "AC"
+    },
+    {
+      "cidade": "Cruzeiro do Sul",
+      "estado": "Acre",
+      "uf": "AC"
+    },
+    {
+      "cidade": "Maceió",
+      "estado": "Alagoas",
+      "uf": "AL"
+    },
+    {
+      "cidade": "Arapiraca",
+      "estado": "Alagoas",
+      "uf": "AL"
+    },
+    {
+      "cidade": "Macapá",
+      "estado": "Amapá",
+      "uf": "AP"
+    },
+    {
+      "cidade": "Santana",
+      "estado": "Amapá",
+      "uf": "AP"
+    },
+    {
+      "cidade": "Manaus",
+      "estado": "Amazonas",
+      "uf": "AM"
+    },
+    {
+      "cidade": "Parintins",
+      "estado": "Amazonas",
+      "uf": "AM"
+    },
+    {
+      "cidade": "Itacoatiara",
+      "estado": "Amazonas",
+      "uf": "AM"
+    },
+    {
+      "cidade": "Salvador",
+      "estado": "Bahia",
+      "uf": "BA"
+    },
+    {
+      "cidade": "Feira de Santana",
+      "estado": "Bahia",
+      "uf": "BA"
+    },
+    {
+      "cidade": "Vitória da Conquista",
+      "estado": "Bahia",
+      "uf": "BA"
+    },
+    {
+      "cidade": "Camaçari",
+      "estado": "Bahia",
+      "uf": "BA"
+    },
+    {
+      "cidade": "Fortaleza",
+      "estado": "Ceará",
+      "uf": "CE"
+    },
+    {
+      "cidade": "Caucaia",
+      "estado": "Ceará",
+      "uf": "CE"
+    },
+    {
+      "cidade": "Juazeiro do Norte",
+      "estado": "Ceará",
+      "uf": "CE"
+    },
+    {
+      "cidade": "Sobral",
+      "estado": "Ceará",
+      "uf": "CE"
+    },
+    {
+      "cidade": "Brasília",
+      "estado": "Distrito Federal",
+      "uf": "DF"
+    },
+    {
+      "cidade": "Ceilândia",
+      "estado": "Distrito Federal",
+      "uf": "DF"
+    },
+    {
+      "cidade": "Vitória",
+      "estado": "Espírito Santo",
+      "uf": "ES"
+    },
+    {
+      "cidade": "Serra",
+      "estado": "Espírito Santo",
+      "uf": "ES"
+    },
+    {
+      "cidade": "Vila Velha",
+      "estado": "Espírito Santo",
+      "uf": "ES"
+    },
+    {
+      "cidade": "Goiânia",
+      "estado": "Goiás",
+      "uf": "GO"
+    },
+    {
+      "cidade": "Aparecida de Goiânia",
+      "estado": "Goiás",
+      "uf": "GO"
+    },
+    {
+      "cidade": "Anápolis",
+      "estado": "Goiás",
+      "uf": "GO"
+    },
+    {
+      "cidade": "São Luís",
+      "estado": "Maranhão",
+      "uf": "MA"
+    },
+    {
+      "cidade": "Imperatriz",
+      "estado": "Maranhão",
+      "uf": "MA"
+    },
+    {
+      "cidade": "Caxias",
+      "estado": "Maranhão",
+      "uf": "MA"
+    },
+    {
+      "cidade": "Cuiabá",
+      "estado": "Mato Grosso",
+      "uf": "MT"
+    },
+    {
+      "cidade": "Várzea Grande",
+      "estado": "Mato Grosso",
+      "uf": "MT"
+    },
+    {
+      "cidade": "Rondonópolis",
+      "estado": "Mato Grosso",
+      "uf": "MT"
+    },
+    {
+      "cidade": "Campo Grande",
+      "estado": "Mato Grosso do Sul",
+      "uf": "MS"
+    },
+    {
+      "cidade": "Dourados",
+      "estado": "Mato Grosso do Sul",
+      "uf": "MS"
+    },
+    {
+      "cidade": "Três Lagoas",
+      "estado": "Mato Grosso do Sul",
+      "uf": "MS"
+    },
+    {
+      "cidade": "Belo Horizonte",
+      "estado": "Minas Gerais",
+      "uf": "MG"
+    },
+    {
+      "cidade": "Uberlândia",
+      "estado": "Minas Gerais",
+      "uf": "MG"
+    },
+    {
+      "cidade": "Contagem",
+      "estado": "Minas Gerais",
+      "uf": "MG"
+    },
+    {
+      "cidade": "Juiz de Fora",
+      "estado": "Minas Gerais",
+      "uf": "MG"
+    },
+    {
+      "cidade": "Belém",
+      "estado": "Pará",
+      "uf": "PA"
+    },
+    {
+      "cidade": "Ananindeua",
+      "estado": "Pará",
+      "uf": "PA"
+    },
+    {
+      "cidade": "Santarém",
+      "estado": "Pará",
+      "uf": "PA"
+    },
+    {
+      "cidade": "Marabá",
+      "estado": "Pará",
+      "uf": "PA"
+    },
+    {
+      "cidade": "João Pessoa",
+      "estado": "Paraíba",
+      "uf": "PB"
+    },
+    {
+      "cidade": "Campina Grande",
+      "estado": "Paraíba",
+      "uf": "PB"
+    },
+    {
+      "cidade": "Curitiba",
+      "estado": "Paraná",
+      "uf": "PR"
+    },
+    {
+      "cidade": "Londrina",
+      "estado": "Paraná",
+      "uf": "PR"
+    },
+    {
+      "cidade": "Maringá",
+      "estado": "Paraná",
+      "uf": "PR"
+    },
+    {
+      "cidade": "Foz do Iguaçu",
+      "estado": "Paraná",
+      "uf": "PR"
+    },
+    {
+      "cidade": "Recife",
+      "estado": "Pernambuco",
+      "uf": "PE"
+    },
+    {
+      "cidade": "Caruaru",
+      "estado": "Pernambuco",
+      "uf": "PE"
+    },
+    {
+      "cidade": "Olinda",
+      "estado": "Pernambuco",
+      "uf": "PE"
+    },
+    {
+      "cidade": "Petrolina",
+      "estado": "Pernambuco",
+      "uf": "PE"
+    },
+    {
+      "cidade": "Teresina",
+      "estado": "Piauí",
+      "uf": "PI"
+    },
+    {
+      "cidade": "Parnaíba",
+      "estado": "Piauí",
+      "uf": "PI"
+    },
+    {
+      "cidade": "Picos",
+      "estado": "Piauí",
+      "uf": "PI"
+    },
+    {
+      "cidade": "Colinas do Maranhão",
+      "estado": "Maranhão",
+      "uf": "MA"
+    },
+    {
+      "cidade": "Rio de Janeiro",
+      "estado": "Rio de Janeiro",
+      "uf": "RJ"
+    },
+    {
+      "cidade": "São Gonçalo",
+      "estado": "Rio de Janeiro",
+      "uf": "RJ"
+    },
+    {
+      "cidade": "Duque de Caxias",
+      "estado": "Rio de Janeiro",
+      "uf": "RJ"
+    },
+    {
+      "cidade": "Nova Iguaçu",
+      "estado": "Rio de Janeiro",
+      "uf": "RJ"
+    },
+    {
+      "cidade": "Niterói",
+      "estado": "Rio de Janeiro",
+      "uf": "RJ"
+    },
+    {
+      "cidade": "Natal",
+      "estado": "Rio Grande do Norte",
+      "uf": "RN"
+    },
+    {
+      "cidade": "Mossoró",
+      "estado": "Rio Grande do Norte",
+      "uf": "RN"
+    },
+    {
+      "cidade": "Parnamirim",
+      "estado": "Rio Grande do Norte",
+      "uf": "RN"
+    },
+    {
+      "cidade": "Porto Alegre",
+      "estado": "Rio Grande do Sul",
+      "uf": "RS"
+    },
+    {
+      "cidade": "Caxias do Sul",
+      "estado": "Rio Grande do Sul",
+      "uf": "RS"
+    },
+    {
+      "cidade": "Pelotas",
+      "estado": "Rio Grande do Sul",
+      "uf": "RS"
+    },
+    {
+      "cidade": "Canoas",
+      "estado": "Rio Grande do Sul",
+      "uf": "RS"
+    },
+    {
+      "cidade": "Porto Velho",
+      "estado": "Rondônia",
+      "uf": "RO"
+    },
+    {
+      "cidade": "Ji-Paraná",
+      "estado": "Rondônia",
+      "uf": "RO"
+    },
+    {
+      "cidade": "Boa Vista",
+      "estado": "Roraima",
+      "uf": "RR"
+    },
+    {
+      "cidade": "Rorainópolis",
+      "estado": "Roraima",
+      "uf": "RR"
+    },
+    {
+      "cidade": "Florianópolis",
+      "estado": "Santa Catarina",
+      "uf": "SC"
+    },
+    {
+      "cidade": "Joinville",
+      "estado": "Santa Catarina",
+      "uf": "SC"
+    },
+    {
+      "cidade": "Blumenau",
+      "estado": "Santa Catarina",
+      "uf": "SC"
+    },
+    {
+      "cidade": "Chapecó",
+      "estado": "Santa Catarina",
+      "uf": "SC"
+    },
+    {
+      "cidade": "São Paulo",
+      "estado": "São Paulo",
+      "uf": "SP"
+    },
+    {
+      "cidade": "Guarulhos",
+      "estado": "São Paulo",
+      "uf": "SP"
+    },
+    {
+      "cidade": "Campinas",
+      "estado": "São Paulo",
+      "uf": "SP"
+    },
+    {
+      "cidade": "São Bernardo do Campo",
+      "estado": "São Paulo",
+      "uf": "SP"
+    },
+    {
+      "cidade": "Santos",
+      "estado": "São Paulo",
+      "uf": "SP"
+    },
+    {
+      "cidade": "Ribeirão Preto",
+      "estado": "São Paulo",
+      "uf": "SP"
+    },
+    {
+      "cidade": "Sorocaba",
+      "estado": "São Paulo",
+      "uf": "SP"
+    },
+    {
+      "cidade": "Aracaju",
+      "estado": "Sergipe",
+      "uf": "SE"
+    },
+    {
+      "cidade": "Lagarto",
+      "estado": "Sergipe",
+      "uf": "SE"
+    },
+    {
+      "cidade": "Palmas",
+      "estado": "Tocantins",
+      "uf": "TO"
+    },
+    {
+      "cidade": "Araguaína",
+      "estado": "Tocantins",
+      "uf": "TO"
+    },
+    {
+      "cidade": "Colinas do Tocantins",
+      "estado": "Tocantins",
+      "uf": "TO"
+    }
+  ]
+}
