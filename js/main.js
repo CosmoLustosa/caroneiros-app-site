@@ -23,7 +23,8 @@
   const isAndroid = /android/i.test(navigator.userAgent)
   const downloadTarget = isAndroid ? APK_URL : PAINEL_URL
 
-  let APP_URL = shareLinkInput ? shareLinkInput.value : 'https://caroneiros.online'
+  const SHARE_URL = 'https://caroneiros.online/#download'
+  let APP_URL = shareLinkInput ? shareLinkInput.value : SHARE_URL
   const APP_NAME = 'Caroneiros'
   let SHARE_TEXT = `Baixe o ${APP_NAME} e encontre caronas perto de você! ${APP_URL}`
 
@@ -104,9 +105,9 @@
     if (shareLinkInput) {
       shareLinkInput.value = user 
         ? `https://caroneiros.online/invite/${user.id}` 
-        : 'https://caroneiros.online'
+        : SHARE_URL
     }
-    APP_URL = shareLinkInput ? shareLinkInput.value : 'https://caroneiros.online'
+    APP_URL = shareLinkInput ? shareLinkInput.value : SHARE_URL
     SHARE_TEXT = `Baixe o ${APP_NAME} e encontre caronas perto de você! ${APP_URL}`
 
     if (!authBtn) return

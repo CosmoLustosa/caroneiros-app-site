@@ -1,0 +1,201 @@
+================================================================================
+  GOOGLE ADSENSE NO FLUTTER WEB – GUIA COMPLETO
+  ================================================================================
+
+  SUMÁRIO
+  1. Criar conta no AdSense
+  2. Widget reutilizável (adsense_banner.dart)
+  3. Exemplo de uso (main.dart)
+  4. Configuração do web/index.html
+  5. Build e deploy
+  6. Boas práticas
+
+  ================================================================================
+  1. CRIAR CONTA NO ADSENSE
+  ================================================================================
+
+  - Acesse https://adsense.google.com
+  - Adicione a URL do seu site (ex: https://caroneiros.com)
+  - Siga a verificação do site (normalmente colando uma meta tag no <head>
+    do web/index.html)
+  - Aguarde aprovação (1-2 semanas)
+  - Após aprovado, vá em An�ncios > Por unidade de an�ncio > Exibir an�ncios
+  - Anote seu ID do cliente: ca-pub-XXXXXXXXXXXXXXXX
+  - Crie um bloco de an�ncios e anote o ID (n�mero de 10 d�gitos)
+
+  ================================================================================
+  2. WIDGET REUTILIZ�VEL (adsense_banner.dart)
+  ================================================================================
+
+  Crie o arquivo: lib/widgets/adsense_banner.dart
+
+  --- IN�CIO DO C�DIGO ---
+  import 'dart:html' as html;
+  import 'package:flutter/foundation.dart';
+  import 'package:flutter/material.dart';
+
+  class AdSenseBanner extends StatefulWidget {
+    final String adClient;
+    final String adSlot;
+    final String adFormat;
+    final double height;
+    final EdgeInsetsGeometry margin;
+
+    const AdSenseBanner({
+      super.key,
+      required this.adClient,
+      required this.adSlot,
+      this.adFormat = 'auto',
+      this.height = 90,
+      this.margin = const EdgeInsets.symmetric(vertical: 12),
+    });
+
+    @override
+    State<AdSenseBanner> createState() => _AdSenseBannerState();
+  }
+
+  class _AdSenseBannerState extends State<AdSenseBanner> {
+    static bool _scriptLoaded = false;
+
+    @override
+    void initState() {
+      super.initState();
+      if (kIsWeb) _loadAdSenseScript();
+    }
+
+    void _loadAdSenseScript() {
+      if (_scriptLoaded) { _pushAd(); return; }
+      final script = html.ScriptElement()
+        ..src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${widget.adClient}'
+        ..async = true
+        ..crossOrigin = 'anonymous';
+      html.document.head!.append(script);
+      _scriptLoaded = true;
+      script.onLoad.listen((_) => _pushAd());
+    }
+
+    void _pushAd() {
+      try {
+        (html.window as dynamic).adsbygoogle.push({});
+      } catch (_) {}
+    }
+
+    @override
+    Widget build(BuildContext context) {
+      if (!kIsWeb) return const SizedBox.shrink();
+      return Container(
+        margin: widget.margin,
+        width: double.infinity,
+        child: AdWidget(content: _buildAdHtml()),
+      );
+    }
+
+    html.Element _buildAdHtml() {
+      final div = html.DivElement();
+      final ins = html.InsElement()
+        ..className = 'adsbygoogle'
+        ..style.display = 'block'
+        ..style.height = '${widget.height}px'
+        ..dataset['adClient'] = widget.adClient
+        ..dataset['adSlot'] = widget.adSlot
+        ..dataset['adFormat'] = widget.adFormat
+        ..dataset['fullWidthResponsive'] = 'true';
+      div.append(ins);
+      return div;
+    }
+  }
+
+  class AdWidget extends StatelessWidget {
+    final html.Element content;
+    const AdWidget({super.key, required this.content});
+
+    @override
+    Widget build(BuildContext context) {
+      // Usando HtmlElementView para renderizar HTML nativo no Flutter Web
+      return HtmlElementView(viewType: 'ad-${content.hashCode}');
+    }
+  }
+  --- FIM DO C�DIGO ---
+
+  ================================================================================
+  3. EXEMPLO DE USO
+  ================================================================================
+
+  No seu main.dart ou em qualquer tela:
+
+  --- IN�CIO DO C�DIGO ---
+  import 'package:seu_app/widgets/adsense_banner.dart';
+
+  // IDs ficticios - substitua pelos seus
+  const String adClient = 'ca-pub-XXXXXXXXXXXXXXXX';
+  const String adSlot1 = '1111111111';
+  const String adSlot2 = '2222222222';
+
+  // Exemplo em uma ListView com banner a cada 5 itens
+  ListView(
+    children: [
+      // Banner no topo
+      AdSenseBanner(
+        adClient: adClient,
+        adSlot: adSlot1,
+        height: 90,
+      ),
+
+      // Seu conte�do com banners intercalados
+      for (int i = 0; i < 20; i++) ...[
+        ListTile(title: Text('Item $i')),
+        if (i % 5 == 4)
+          AdSenseBanner(
+            adClient: adClient,
+            adSlot: adSlot2,
+            adFormat: 'fluid',
+            height: 120,
+          ),
+      ],
+    ],
+  )
+  --- FIM DO C�DIGO ---
+
+  ================================================================================
+  4. CONFIGURA��O DO web/index.html
+  ================================================================================
+
+  No <head> do web/index.html, garanta que tem:
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  O widget j� injeta o script do AdSense automaticamente,
+  n�o precisa adicionar manualmente.
+
+  ================================================================================
+  5. BUILD E DEPLOY
+  ================================================================================
+
+  # Gerar vers�o web
+  flutter build web --release
+
+  # Fazer deploy (exemplo com Firebase Hosting)
+  firebase deploy --only hosting
+
+  # Ou suba a pasta build/web para seu servidor (Netlify, Vercel, etc.)
+
+  ================================================================================
+  6. BOAS PR�TICAS
+  ================================================================================
+
+  - M�ximo de 1-3 banners por tela (mobile) e 2-4 (desktop)
+  - NUNCA coloque an�ncio em tela de login/cadastro (viola pol�ticas)
+  - Tenha: Pol�tica de Privacidade, Contato, Sobre e Termos de Uso
+  - Combine an�ncios com afiliados (seguro auto, revis�o veicular)
+  - AdSense paga via dep�sito banc�rio a partir de R$ 100
+
+  ================================================================================
+  ALTERNATIVAS AO ADSENSE
+  ================================================================================
+
+  Se o AdSense n�o aprovar seu site, tente:
+  - Media.net (rede da Yahoo/Bing)
+  - PropellerAds (menor exig�ncia de tr�fego)
+  - Ezoic (precisa de tr�fego m�nimo, mas paga melhor)
+
+  ================================================================================
