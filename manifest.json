@@ -1,11 +1,11 @@
 {
-    "name": "caroneiros_app",
-    "short_name": "caroneiros_app",
+    "name": "MeLeva",
+    "short_name": "MeLeva",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#1A3C5E",
+    "theme_color": "#1A3C5E",
+    "description": "MeLeva — O app que te leva mais longe.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

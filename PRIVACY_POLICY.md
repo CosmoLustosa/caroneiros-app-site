@@ -1,10 +1,10 @@
-# POLÍTICA DE PRIVACIDADE — CARONEIROS
+# POLÍTICA DE PRIVACIDADE — MELEVA
 
 **Última atualização: 8 de Julho de 2026**
 
-O aplicativo **Caroneiros** (doravante denominado "Aplicativo") é operado por Cosmo Lustosa. Nós respeitamos a sua privacidade e estamos comprometidos em proteger os dados pessoais que você compartilha conosco. Esta Política de Privacidade explica como coletamos, usamos, compartilhamos, armazenamos e protegemos suas informações quando você utiliza nosso aplicativo de caronas, transporte de encomendas e fretes.
+O aplicativo **MeLeva** (doravante denominado "Aplicativo") é operado por Cosmo Lustosa. Nós respeitamos a sua privacidade e estamos comprometidos em proteger os dados pessoais que você compartilha conosco. Esta Política de Privacidade explica como coletamos, usamos, compartilhamos, armazenamos e protegemos suas informações quando você utiliza nosso aplicativo de caronas, transporte de encomendas e fretes.
 
-Ao utilizar o Caroneiros, você concorda com a coleta e o uso de informações de acordo com esta política. **Se você não concorda com qualquer termo desta política, você não deve utilizar o aplicativo.**
+Ao utilizar o MeLeva, você concorda com a coleta e o uso de informações de acordo com esta política. **Se você não concorda com qualquer termo desta política, você não deve utilizar o aplicativo.**
 
 ---
 
@@ -60,7 +60,7 @@ Você possui controle total sobre suas informações:
 
 ## 6. REQUISITO DE IDADE MÍNIMA
 
-O uso do Caroneiros é estritamente limitado a pessoas com **18 (dezoito) anos ou mais**. Não coletamos intencionalmente informações de crianças ou adolescentes menores de idade. Se identificarmos qualquer conta ativa pertencente a um menor, a mesma será suspensa e excluída imediatamente.
+O uso do MeLeva é estritamente limitado a pessoas com **18 (dezoito) anos ou mais**. Não coletamos intencionalmente informações de crianças ou adolescentes menores de idade. Se identificarmos qualquer conta ativa pertencente a um menor, a mesma será suspensa e excluída imediatamente.
 
 ---
 

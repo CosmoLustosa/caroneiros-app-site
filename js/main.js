@@ -1,5 +1,5 @@
 /* ============================================================
-   Caroneiros — Main Application Script
+   MeLeva — Main Application Script
    ============================================================ */
 
 ;(function () {
@@ -25,14 +25,14 @@
 
   const SHARE_URL = 'https://caroneiros.online/#download'
   let APP_URL = shareLinkInput ? shareLinkInput.value : SHARE_URL
-  const APP_NAME = 'Caroneiros'
+  const APP_NAME = 'MeLeva'
   let SHARE_TEXT = `Baixe o ${APP_NAME} e encontre caronas perto de você! ${APP_URL}`
 
   /* ============================================================
      Auth System
      ============================================================ */
-  const AUTH_KEY = 'caroneiros_user'
-  const BONUS_KEY = 'caroneiros_bonus'
+  const AUTH_KEY = 'meleva_user'
+  const BONUS_KEY = 'meleva_bonus'
 
   const authBtn = document.getElementById('authBtn')
   const authBtnText = document.getElementById('authBtnText')
@@ -168,7 +168,7 @@
     authModalTitle.textContent = isLogin ? 'Entrar' : 'Criar Conta'
     authModalDesc.textContent = isLogin
       ? 'Entre com sua conta para continuar acumulando bônus.'
-      : 'Crie sua conta para acumular bônus e usar o Caroneiros no celular.'
+      : 'Crie sua conta para acumular bônus e usar o MeLeva no celular.'
     authSubmitText.textContent = isLogin ? 'Entrar' : 'Criar Conta'
 
     authNameField.style.display = isLogin ? 'none' : 'block'
