@@ -3,9 +3,9 @@
     "short_name": "MeLeva",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#1A3C5E",
-    "theme_color": "#1A3C5E",
-    "description": "MeLeva — O app que te leva mais longe.",
+    "background_color": "#FFFFFF",
+    "theme_color": "#FFFFFF",
+    "description": "O app que te leva mais longe.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
