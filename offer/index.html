@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MeLeva — Detalhes da Oferta</title>
+  <meta name="description" content="Confira os detalhes desta oferta compartilhada no aplicativo MeLeva.">
+
+  <!-- Open Graph / WhatsApp / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Oferta no MeLeva — Caronas, Encomendas e Fretes">
+  <meta property="og:description" content="Abra esta oferta no aplicativo MeLeva ou baixe o app no Google Play.">
+  <meta property="og:image" content="https://caroneiros.online/favicon.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0284C7;
+      --primary-dark: #0369A1;
+      --secondary: #F97316;
+      --accent: #10B981;
+      --slate-900: #0F172A;
+      --slate-800: #1E293B;
+      --slate-600: #475569;
+      --slate-100: #F1F5F9;
+      --slate-50: #F8FAFC;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: radial-gradient(120% 120% at 50% 0%, #0F172A 0%, #1E293B 50%, #0A0F1D 100%);
+      color: #FFFFFF;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background glow decorations */
+    .glow-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+    .glow-1 {
+      width: 320px;
+      height: 320px;
+      background: #0284C7;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .glow-2 {
+      width: 240px;
+      height: 240px;
+      background: #F97316;
+      bottom: -40px;
+      right: 10%;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 440px;
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      padding: 32px 24px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      text-align: center;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #0284C7, #0284C7);
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 24px -6px rgba(2, 132, 199, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .logo-container img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+
+    .brand-subtitle {
+      font-size: 14px;
+      color: #94A3B8;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .offer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      background: rgba(2, 132, 199, 0.15);
+      color: #38BDF8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .offer-badge.package {
+      background: rgba(249, 115, 22, 0.15);
+      color: #FB923C;
+      border-color: rgba(251, 146, 60, 0.3);
+    }
+
+    .offer-badge.freight {
+      background: rgba(168, 85, 247, 0.15);
+      color: #C084FC;
+      border-color: rgba(192, 132, 252, 0.3);
+    }
+
+    .message-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 18px 16px;
+      margin-bottom: 28px;
+    }
+
+    .message-box p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #E2E8F0;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+      color: #FFFFFF;
+      box-shadow: 0 10px 20px -5px rgba(2, 132, 199, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px -5px rgba(2, 132, 199, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      font-size: 12px;
+      color: #64748B;
+      line-height: 1.4;
+    }
+
+    .footer-note a {
+      color: #38BDF8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-circle glow-1"></div>
+  <div class="glow-circle glow-2"></div>
+
+  <main class="container">
+    <div class="logo-container">
+      <img src="../favicon.png" alt="MeLeva Logo">
+    </div>
+
+    <h1 class="brand-title">MeLeva</h1>
+    <p class="brand-subtitle" id="tagline">O app que te leva mais longe</p>
+
+    <div class="offer-badge" id="badgeContainer">
+      <span id="badgeIcon">🚗</span>
+      <span id="badgeText">Oferta de Carona</span>
+    </div>
+
+    <div class="message-box">
+      <p id="offerDescription">
+        Uma oferta exclusiva foi compartilhada com você. Abra diretamente no aplicativo MeLeva para ver todos os detalhes e reservar.
+      </p>
+    </div>
+
+    <div class="actions">
+      <a href="#" id="openAppBtn" class="btn btn-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+        <span id="openBtnText">Abrir no Aplicativo</span>
+      </a>
+
+      <a href="https://play.google.com/store/apps/details?id=com.cosmolustosa.caroneiros_app" class="btn btn-secondary" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3.609 1.814L13.792 12 3.61 22.186c-.183-.243-.292-.544-.292-.871V2.685c0-.327.109-.628.292-.871zM14.85 13.06l2.42 2.42-12.723 7.348 10.303-9.768zm0-2.12L4.547 1.172l12.723 7.348-2.42 2.42zm1.488 1.06l3.525 2.036c.808.467.808 1.229 0 1.696l-3.525 2.036-2.19-2.19 2.19-2.19z"/>
+        </svg>
+        <span id="playStoreText">Baixar na Google Play</span>
+      </a>
+    </div>
+
+    <div class="footer-note">
+      <span id="footerText">MeLeva © 2026 • Caronas e Entregas Compartilhadas</span>
+    </div>
+  </main>
+
+  <script>
+    // ── 1. Traduções I18n Dinâmicas ──────────────────────────────────────────
+    const translations = {
+      pt: {
+        tagline: "O app que te leva mais longe",
+        rideBadge: "Oferta de Carona",
+        packageBadge: "Oferta de Encomenda",
+        freightBadge: "Oferta de Frete",
+        serviceBadge: "Oferta de Serviço",
+        offerDescription: "Uma oferta foi compartilhada com você. Abra diretamente no aplicativo MeLeva para ver todos os detalhes e reservar.",
+        openBtn: "Abrir no Aplicativo",
+        playStoreBtn: "Baixar na Google Play",
+        footer: "MeLeva © 2026 • Caronas e Entregas Compartilhadas"
+      },
+      en: {
+        tagline: "The app that takes you further",
+        rideBadge: "Ride Offer",
+        packageBadge: "Package Delivery Offer",
+        freightBadge: "Freight Offer",
+        serviceBadge: "Service Offer",
+        offerDescription: "An offer has been shared with you. Open directly in the MeLeva app to view full details and book.",
+        openBtn: "Open in App",
+        playStoreBtn: "Get it on Google Play",
+        footer: "MeLeva © 2026 • Shared Rides & Deliveries"
+      },
+      es: {
+        tagline: "La app que te lleva más lejos",
+        rideBadge: "Oferta de Viaje",
+        packageBadge: "Oferta de Encomienda",
+        freightBadge: "Oferta de Flete",
+        serviceBadge: "Oferta de Servicio",
+        offerDescription: "Una oferta ha sido compartida contigo. Ábrela directamente en la aplicación MeLeva para ver los detalles y reservar.",
+        openBtn: "Abrir en la Aplicación",
+        playStoreBtn: "Descargar en Google Play",
+        footer: "MeLeva © 2026 • Viajes y Entregas Compartidas"
+      },
+      fr: {
+        tagline: "L'application qui vous emmène plus loin",
+        rideBadge: "Offre de Covoiturage",
+        packageBadge: "Offre de Colis",
+        freightBadge: "Offre de Fret",
+        serviceBadge: "Offre de Service",
+        offerDescription: "Une offre a été partagée avec vous. Ouvrez directement dans l'application MeLeva pour voir tous les détails et réserver.",
+        openBtn: "Ouvrir dans l'Application",
+        playStoreBtn: "Télécharger sur Google Play",
+        footer: "MeLeva © 2026 • Covoiturage et Livraisons Partagées"
+      }
+    };
+
+    // Detect user language
+    const userLang = (navigator.language || navigator.userLanguage || 'pt').substring(0, 2).toLowerCase();
+    const l10n = translations[userLang] || translations.pt;
+
+    // Parse URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const type = (params.get('type') || '').toLowerCase();
+    const id = params.get('id') || '';
+
+    // Apply translations & badges
+    document.getElementById('tagline').textContent = l10n.tagline;
+    document.getElementById('offerDescription').textContent = l10n.offerDescription;
+    document.getElementById('openBtnText').textContent = l10n.openBtn;
+    document.getElementById('playStoreText').textContent = l10n.playStoreBtn;
+    document.getElementById('footerText').textContent = l10n.footer;
+
+    const badgeContainer = document.getElementById('badgeContainer');
+    const badgeText = document.getElementById('badgeText');
+    const badgeIcon = document.getElementById('badgeIcon');
+
+    if (type === 'package') {
+      badgeContainer.classList.add('package');
+      badgeIcon.textContent = '📦';
+      badgeText.textContent = l10n.packageBadge;
+    } else if (type === 'freight') {
+      badgeContainer.classList.add('freight');
+      badgeIcon.textContent = '🚚';
+      badgeText.textContent = l10n.freightBadge;
+    } else if (type === 'ride') {
+      badgeIcon.textContent = '🚗';
+      badgeText.textContent = l10n.rideBadge;
+    } else {
+      badgeIcon.textContent = '✨';
+      badgeText.textContent = l10n.serviceBadge;
+    }
+
+    // Configure deep linking URLs
+    const customSchemeUri = `caroneiros://offer?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
+    const androidIntentUri = `intent://offer?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=caroneiros;package=com.cosmolustosa.caroneiros_app;end`;
+
+    const openBtn = document.getElementById('openAppBtn');
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    openBtn.href = isAndroid ? androidIntentUri : customSchemeUri;
+
+    // Auto-attempt redirect on mobile devices when parameters are present
+    if (isMobile && id) {
+      setTimeout(() => {
+        window.location.href = isAndroid ? androidIntentUri : customSchemeUri;
+      }, 400);
+    }
+  </script>
+</body>
+</html>
