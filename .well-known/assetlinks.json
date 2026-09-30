@@ -1,11 +1,15 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.cosmolustosa.caroneiros_app",
       "sha256_cert_fingerprints": [
-        "0A:9F:04:E5:DB:3F:52:32:FA:14:CB:48:9F:5F:DC:0D:16:43:41:7A:61:2A:9A:F1:0B:71:B1:81:52:C0:70:AE"
+        "0A:9F:04:E5:DB:3F:52:32:FA:14:CB:48:9F:5F:DC:0D:16:43:41:7A:61:2A:9A:F1:0B:71:B1:81:52:C0:70:AE",
+        "A6:2D:34:15:3B:D2:10:EC:83:C9:60:38:B4:5C:D6:C4:E0:94:B6:CE:3C:00:42:E7:A3:DC:53:73:95:E3:96:D2"
       ]
     }
   }
