@@ -18,12 +18,12 @@
   const yearSpan = document.getElementById('currentYear')
   const statNumbers = document.querySelectorAll('[data-count]')
 
-  const APK_URL = 'https://github.com/CosmoLustosa/caroneiros-app-site/releases/latest/download/caroneiros.apk'
+  const APK_URL = 'https://play.google.com/store/apps/details?id=com.cosmolustosa.caroneiros_app&pcampaignid=web_share'
   const PAINEL_URL = 'https://caroneiros.online/painel/index.html'
   const isAndroid = /android/i.test(navigator.userAgent)
   const downloadTarget = isAndroid ? APK_URL : PAINEL_URL
 
-  const SHARE_URL = 'https://caroneiros.online/#download'
+  const SHARE_URL = 'https://play.google.com/store/apps/details?id=com.cosmolustosa.caroneiros_app&pcampaignid=web_share'
   let APP_URL = shareLinkInput ? shareLinkInput.value : SHARE_URL
   const APP_NAME = 'MeLeva'
   let SHARE_TEXT = `Baixe o ${APP_NAME} e encontre caronas perto de você! ${APP_URL}`
@@ -468,10 +468,16 @@
   window.addEventListener('scroll', updateActiveNav, { passive: true })
   updateActiveNav()
 
-  /* ----- Smooth Scroll for Nav Links ----- */
+  /* ----- Smooth Scroll for Nav Links & Download Tab Redirect ----- */
   navLinks.forEach(function (link) {
     link.addEventListener('click', function (e) {
       const href = link.getAttribute('href')
+      if (link.id === 'navDownload' || href === '#download' || (href && href.endsWith('#download'))) {
+        e.preventDefault()
+        const targetUrl = isAndroid ? APK_URL : PAINEL_URL
+        redirectDownload(e, targetUrl)
+        return
+      }
       if (href && href.startsWith('#')) {
         e.preventDefault()
         const target = document.querySelector(href)
@@ -639,10 +645,24 @@
   })
 
   /* ----- Device-aware download redirect ----- */
-  function redirectDownload(e, url) {
-    e.preventDefault()
+  function closeMobileMenu () {
+    if (mainNav && mainNav.classList.contains('header__nav--open')) {
+      mainNav.classList.remove('header__nav--open')
+      if (menuToggle) {
+        menuToggle.setAttribute('aria-expanded', 'false')
+        menuToggle.setAttribute('aria-label', 'Abrir menu')
+      }
+      document.body.style.overflow = ''
+    }
+  }
+
+  function redirectDownload (e, url) {
+    if (e && typeof e.preventDefault === 'function') {
+      e.preventDefault()
+    }
+    closeMobileMenu()
     if (typeof window.gtag === 'function') {
-      window.gtag('event', 'download_click', { app: APP_NAME })
+      window.gtag('event', 'download_click', { app: APP_NAME, target_url: url })
     }
     window.location.href = url
   }
@@ -650,7 +670,7 @@
   document.querySelectorAll('.btn--store').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       if (btn.id === 'googlePlayBtn') {
-        redirectDownload(e, isAndroid ? APK_URL : PAINEL_URL)
+        redirectDownload(e, APK_URL)
       } else {
         redirectDownload(e, PAINEL_URL)
       }
@@ -660,12 +680,16 @@
   const headerCta = document.querySelector('.header__cta')
   if (headerCta) {
     headerCta.addEventListener('click', function (e) {
-      e.preventDefault()
       const url = isAndroid ? APK_URL : PAINEL_URL
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'download_click', { app: APP_NAME })
-      }
-      window.location.href = url
+      redirectDownload(e, url)
+    })
+  }
+
+  const heroDownloadBtn = document.querySelector('.hero__btn[href="#download"]')
+  if (heroDownloadBtn) {
+    heroDownloadBtn.addEventListener('click', function (e) {
+      const url = isAndroid ? APK_URL : PAINEL_URL
+      redirectDownload(e, url)
     })
   }
 
