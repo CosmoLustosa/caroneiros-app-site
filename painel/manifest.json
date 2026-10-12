@@ -1,23 +1,38 @@
 {
-    "name": "MeLeva",
+    "name": "MeLeva - Caronas e Encomendas",
     "short_name": "MeLeva",
-    "start_url": ".",
+    "start_url": "/",
+    "scope": "/",
     "display": "standalone",
+    "display_override": [
+        "window-controls-overlay",
+        "standalone",
+        "minimal-ui"
+    ],
     "background_color": "#FFFFFF",
-    "theme_color": "#FFFFFF",
-    "description": "O app que te leva mais longe.",
+    "theme_color": "#7E22CE",
+    "description": "O app que te leva mais longe. Caronas compartilhadas e envio de encomendas com segurança.",
     "orientation": "portrait-primary",
+    "lang": "pt-BR",
+    "dir": "ltr",
+    "categories": [
+        "travel",
+        "navigation",
+        "transportation"
+    ],
     "prefer_related_applications": false,
     "icons": [
         {
             "src": "icons/Icon-192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "icons/Icon-512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "icons/Icon-maskable-192.png",
